@@ -12,8 +12,7 @@ Spotify Web APIを使ったdiscordの共有bot
 
 | モジュール・アプリ   | バージョン |
 | --------------------- | ---------- |
-| Spotipy                | 3.11.7     |
-| json     | 0.19.2     |
+| Spotipy                | 3.11.7     |  
 | discord.py  | 2.3.2      |
 
 
