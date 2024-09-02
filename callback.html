@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify 認証コード</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 90%;
+            width: 600px;
+        }
+        .code {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1DB954;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            position: relative;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        .code pre {
+            white-space: pre-wrap;
+            margin: 0;
+        }
+        .code-frame {
+            position: relative;
+        }
+        .code-frame .__select-code {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 1.2rem;
+        }
+        .code-frame .__select-code span {
+            margin-right: 0.5rem;
+            font-weight: bold;
+            opacity: 0;
+            background-color: #364549;
+            padding: 5px;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 3px;
+        }
+        .code-frame .__select-code i {
+            cursor: pointer;
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .code-frame .__select-code i:hover {
+            opacity: 0.8;
+        }
+        .code-frame .__select-code i:active {
+            opacity: 0.6;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>認証コードが取得されました。</h1>
+        <p>認証コード↓</p>
+        <div id="auth" class="code code-frame">
+            <pre></pre>
+        </div>
+        <p>Discordに戻って、/loginコマンドを使用し、入力してください。</p>
+    </div>
+
+    <script>
+        var str = (new URL(location.href)).searchParams.get("code");
+        document.querySelector('#auth pre').textContent = str;
+
+        function addSelectButton(elmCodeFrame){
+            var elmSelectButton = document.createElement('div');
+            elmSelectButton.setAttribute('class', '__select-code');
+            elmSelectButton.addEventListener('click', function(){
+                select(elmCodeFrame);
+            });
+            elmSelectButton.insertAdjacentHTML('afterbegin', '<span>Copied!</span><i class="fa fa-clipboard"/>');
+            elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
+        }
+
+        function select(elm){
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            var range = document.createRange();
+            range.selectNodeContents(elm.querySelector('pre'));
+            selection.addRange(range);
+            document.execCommand('copy');
+            selection.removeAllRanges();
+            var span = elm.querySelector('.__select-code span');
+            span.style.transition = 'none';
+            span.style.opacity = 1;
+            setTimeout(function() {
+                span.style.transition = 'opacity 1s';
+            }, 500);
+            setTimeout(function() {
+                span.style.opacity = 0;
+            }, 1000);
+        }
+
+        addSelectButton(document.querySelector('.code-frame'));
+    </script>
+</body>
+</html>
