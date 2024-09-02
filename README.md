@@ -1,6 +1,6 @@
 # Spotify-for-discord
 
-Spotify Web APIを使ったdiscordの共有bot
+Spotify Web APIを使った直近１ヶ月の聞いた時間が長い曲を共有するDiscord Bot
 
 ## 目次
 - [環境構築](##環境構築)
@@ -18,14 +18,13 @@ Spotify Web APIを使ったdiscordの共有bot
 
 
 ## インストール方法、使い方
-1 app.pyをインストールします。
+1 app.py、callback.htmlをインストール
 
-2 Voicevoxを起動します。
+2 app.pyと同じディレクトリ内にUser/token.json、template/callback.html作成する。(callback.htmlは添付してあるものに)
 
-3 VSCode等のエディタでapp.pyを開き、ffmpegやopus等、ダウンロードしたツールのパスを正しく指定します。
+3 Spotify公式のAPIを取得してください。開発用のAPIでも動きますが、申請して公式APIを取得すべきです。[Spotify公式Web API](https://developer.spotify.com/documentation/web-api)
 
-4 Discordボットのトークンを入力し、アプリケーションを起動します。起動後、Discord内で「/help」と入力すると、利用可能な機能の一覧が表示されます。
-
+4 SpotifyのClient id、Client SecretとDiscord Bot Tokenを指定してください。
 
 
 ## ライセンス
