@@ -137,8 +137,9 @@ async def topsongs(interaction: discord.Interaction):
             await interaction.response.send_message(f"直近1ヶ月で聞いた時間が長い曲\n\n{top_tracks}")
         #TopSongsが見つからない場合
         else:
-            await interaction.response.send_message("トップトラックが見つかりませんでした。")
+            await interaction.response.send_message("直近で聞いた音楽が見つかりませんでした。")
     except SpotifyException as e:
+        #エラー確認用デバッグ(消しても動作に影響はありません)
         print(f"Spotify API エラー: {e}")
         print(f"HTTPステータス: {e.http_status}")
         print(f"理由: {e.reason}")
