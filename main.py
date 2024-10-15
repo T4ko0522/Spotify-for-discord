@@ -9,9 +9,9 @@ from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth, SpotifyOauthError
 from spotipy.exceptions import SpotifyException
 
-load_dotenv('/Users/tako/VSCode/.env')
+load_dotenv('.envのパス入れろ')
 user_tokens = {}
-TOKENS_FILE = '/Users/tako/VSCode/Project/Python/Spotify/users/token.json'  #なんかフルパスじゃないと動かん　なんでかはわからん
+TOKENS_FILE = '/Users/tako/VSCode/Project/Python/Spotify/users/token.json'  #なんか相対パスじゃエラー出る フルパスじゃないと動かん　なんでかはわからん
 
 if os.path.exists(TOKENS_FILE):
     try:
