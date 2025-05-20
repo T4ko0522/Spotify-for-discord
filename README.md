@@ -1,3 +1,6 @@
+# Python & APIの学習を目的に作ったBOT
+プログラミングを学び始めてかなり最初に作ったので完成度低いし、コードも汚いです！！
+
 # Spotify-for-discord
 
 Spotify Web APIを使った直近１ヶ月の聞いた時間が長い曲を共有するDiscord Bot
